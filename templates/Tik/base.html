@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <meta charset="utf-8">
+    <title>tik</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-top">
+            <div>
+              <a href="{% url 'home' %}"><h1><i class="fas fa-check"></i> tik</h1></a>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="sign">
+              <a href="{{ user.get_absolute_url }}">{{ request.user.username }}</a>
+              <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            {% else %}
+            <div class="sign">
+              <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Sign up</a>
+              <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+            {% endif %}
+        </div>
+        <nav>
+          <a href="{% url 'problem_list' %}"><i class="fa fa-code"></i> Problem</a>
+          <a href="{% url 'discussion' %}"><i class="far fa-comment"></i> Discussions</a>
+          <a href="{% url 'about' %}"><i class="far fa-question-circle"></i> About</a>
+        </nav>
+      </div>
+    </header>
+    <div class="footer">
+    <footer>
+        <p>Posted by: Amir |<a href="{% url 'contact' %}">  Contact us </a>.<i class="fas fa-phone"></i></p>
+      </footer>
+    </div>
+    {% block body-block %}
+    {% endblock %}
+  </body>
+</html>
+

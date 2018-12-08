@@ -1,0 +1,14 @@
+{% extends "tik/base.html" %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+<div class="container" id="container">
+<h4><strong>SIGN UP</strong> </h4>
+<form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit"> Register </button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "Accounts/account_base.html" %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+  <div class="container" id="container">
+    <h3>{{ user.username }}'s profile</h3>
+    <div class="profile">
+        <img src="{{userprofile.profile_pic.url}}">
+        <p>First Name :{{ user.first_name }} </p>
+        <p>Last Name : {{ user.last_name }}</p>
+        <p>Username : {{ user.username }}  </p>
+        <p>Primary Email : {{ user.email }} </p>
+        <p>Bio  : {{ userprofile.bio }}</p>
+    </div>
+    {% if user ==  request.user %}
+    <div class="button">
+        <a href="{% url 'update_profile' %}">update profile</a>
+        <a href="{% url 'update_password' %}">change password</a>
+    </div>
+    {% endif %}
+    </div>
+{% endblock %}

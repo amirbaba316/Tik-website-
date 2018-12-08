@@ -1,0 +1,33 @@
+{% extends "problem/base_problem.html" %}
+{% load static %}
+
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/problem_list.css' %}">
+    <div class="container" id="container">
+      <h4>Problem List</h4>
+      {% if user.is_authenticated %} 
+      <div>
+       <a href="{% url 'post_problem' %}" class="LinkButton">Add Problem </a>
+      </div>
+      {% endif %}
+      <div class="table">
+      <table>
+        <thead>
+        <th> Problem Name </th>
+        <th> Difficulty </th>
+      </thead>
+      <tbody>
+      {% for problem in problems %}
+      <div class="row">
+      <tr>
+        <td class="problem"><a href="{{ problem.get_absolute_url }}"><i class="fas fa-caret-right"></i>  {{ problem.title }}</a> </td>
+        <td class="difficulty"> {{ problem.difficulty }}</td>
+      </tr>
+      </div>
+      {% endfor %}
+      </tbody>
+      </table>
+      </div>
+    </div>
+    {% endblock %}
+    <p></p>

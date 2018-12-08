@@ -1,0 +1,15 @@
+{% extends "Accounts/account_base.html" %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+<div class="container" id="container">
+<h3>Update Profile </h3>
+<form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
+    {% include "Tik/message.html" %}
+    {% csrf_token %}
+    {{ update_form.as_p }}
+    {{ user_profile.as_p }}
+    <button type="submit"> Update </button>
+</form>
+</div>
+{% endblock %}

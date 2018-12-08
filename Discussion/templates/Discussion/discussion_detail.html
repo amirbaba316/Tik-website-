@@ -1,0 +1,24 @@
+{% extends 'tik/base.html' %}
+{% load static %}
+
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/discussion_detail.css' %}">
+<div class="container" id="container">
+  <h2></h2>
+  <h3>{{ discussion.title }}</h3>
+  <p class="argument">{{ discussion.argument }}</p>
+  <h6> <strong> Posted By: {{ discussion.creator }}</strong> </h6>
+  <h5>Comments :</h5>
+  {% for comment in comments %}
+  <div class="comment">
+    <p class="user"> <strong>{{ comment.username }} </strong></p>
+    <p class="comm">{{ comment.comment_text }}</p>
+  </div>
+  {% endfor %}
+  <form action="{{ discussion.get_absolute_url }}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Post </button>
+  </form>
+</div>
+{% endblock %}

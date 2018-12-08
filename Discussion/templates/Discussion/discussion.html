@@ -1,0 +1,19 @@
+{% extends 'tik/base.html' %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/discussion.css' %}">
+<div class="container" id="container">
+<h2 > Discussion Forum</h2>
+{% if user.is_authenticated %}
+  <a href="{% url 'add_thread' %}" class="LinkButton">Add Thread</a>
+{% endif %}
+<div>
+  {% for discuss in discussion %}
+  <div class="button">
+  <a href="{{ discuss.get_absolute_url }}" >{{ discuss.title }}</a>
+  <p> {{ discuss.creator }}</p>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

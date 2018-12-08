@@ -1,0 +1,13 @@
+{% extends "problem/base_problem.html" %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/postproblem.css' %}">
+<div class="container" id="container">
+<h3>Problem Details </h3>
+  <form  action="{% url 'post_problem' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+   <button type="submit"> Create </button>
+  </form>
+</div>
+{% endblock %}

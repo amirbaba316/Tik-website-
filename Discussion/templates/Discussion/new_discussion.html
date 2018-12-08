@@ -1,0 +1,13 @@
+{% extends 'tik/base.html' %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/new_discussion.css' %}">
+<div class="container" id="container">
+  <h2> Discussion Details </h2>
+  <form action="{% url 'add_thread' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Create </button>
+  </form>
+</div>
+{% endblock %}

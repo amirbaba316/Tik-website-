@@ -1,0 +1,9 @@
+{% extends 'tik/base.html' %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container" id="container"></div>
+ {% include "Tik/message.html" %}
+</div>
+<img src="{% static 'code.jpeg' %}" >
+{% endblock %}

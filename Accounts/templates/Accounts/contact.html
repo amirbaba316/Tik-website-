@@ -1,0 +1,17 @@
+{% extends 'Accounts/account_base.html' %}
+{% load static %}
+
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+  <div class="container" id="container">
+    <h3>Contact Us</h3>
+      <form
+          action="{% url 'contact' %}"
+          method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">
+          Send</button>
+      </form>
+  </div>
+{% endblock %}

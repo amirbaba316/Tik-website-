@@ -1,0 +1,14 @@
+{% extends "tik/base.html" %}
+{% load static %}
+{% block body-block %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="container" id="container">
+<h3>Login Here </h3>
+{% include 'tik/message.html' %}
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Login </button>
+</form>
+</div>
+{% endblock %}
